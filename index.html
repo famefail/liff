@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/style.css" media="all">
 </head>
 <body>
+
   <p>update</p>
   <p id="os"><b>OS:</b> </p>
   <p id="language"><b>Language:</b> </p>
@@ -81,13 +82,12 @@
       document.getElementById("version").append(liff.getVersion())
       document.getElementById("accessToken").append(liff.getAccessToken())
       document.getElementById("isInClient").append(liff.isInClient())
-      if (liff.isInClient()){
+      if (liff.isInClient()) {
         document.getElementById("btnLogOut").style.display = "none"
-      }
-      else{
+      } else {
         document.getElementById("btnMsg").style.display = "none"
         document.getElementById("btnScanCode").style.display = "none"
-        document.getElementById("btnClise").style.display = "none"
+        document.getElementById("btnClose").style.display = "none"
       }
     }
 
