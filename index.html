@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <p>update3</p>
+  <p>update4</p>
   <p id="os"><b>OS:</b> </p>
   <p id="language"><b>Language:</b> </p>
   <p id="version"><b>Version:</b> </p>
@@ -53,18 +53,33 @@
     }
 
     function logOut() {
+
     }
 
     function closed() {
+      liff.closeWindow()
     }
 
     async function scanCode() {
+      const result = await liff.scanCode()
+      document.getElementById("scanCode").append(result.value)
     }
 
     function openWindow() {
+      liff.openWindow({
+        url:"https://line.me",
+        external: true
+      })
     }
 
     async function getFriendship() {
+      const friend = await liff.getFriendship()
+      document.getElementById("friendship").append(friend.friendFlag)
+      if(!friend.friendFlag){
+        if(confirm("คุณยังไม่ได้เพิ่ม Bot เป็นเพื่อนเพิ่มไหม?")){
+          window.location = "aswd"
+        }
+      }
     }
 
     async function sendMsg() {
@@ -115,11 +130,14 @@
     async function main() {
 
       await liff.init({ liffId: "1656989778-m0aPXd0M" })
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+      if(liff.isLoggedIn()){
       getEnvironment()
       getUserProfile()
       getContext()
       // getFriendship()
       // createUniversalLink()
+      }
     }
     main()
   </script>
